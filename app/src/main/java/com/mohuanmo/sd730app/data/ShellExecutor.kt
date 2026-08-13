@@ -3,8 +3,6 @@ package com.mohuanmo.sd730app.data
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import java.util.concurrent.TimeUnit
 
 object ShellExecutor {
@@ -21,7 +19,7 @@ object ShellExecutor {
 
     suspend fun hasRoot(): Boolean = withContext(Dispatchers.IO) {
         try {
-            val process = Runtime.getRuntime().exec("su -c id")
+            val process = Runtime.getRuntime().exec(arrayOf("su", "-c", "id"))
             val exit = process.waitFor(3, TimeUnit.SECONDS)
             if (!exit) {
                 process.destroyForcibly()
@@ -40,10 +38,9 @@ object ShellExecutor {
     }
 
     suspend fun exec(command: String): Result = withContext(Dispatchers.IO) {
-        val fullCommand = "su -c '$command'"
-        Log.d(TAG, "Executing: $fullCommand")
+        Log.d(TAG, "Executing via su: $command")
         try {
-            val process = Runtime.getRuntime().exec(fullCommand)
+            val process = Runtime.getRuntime().exec(arrayOf("su", "-c", command))
             val finished = process.waitFor(TIMEOUT_SECONDS, TimeUnit.SECONDS)
             if (!finished) {
                 process.destroyForcibly()
