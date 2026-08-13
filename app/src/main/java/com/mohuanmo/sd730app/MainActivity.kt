@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material.icons.filled.Memory
+import androidx.compose.material.icons.filled.VideogameAsset
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -22,6 +23,7 @@ import com.mohuanmo.sd730app.ui.screen.ModeScreen
 import com.mohuanmo.sd730app.ui.screen.ThreadsScreen
 import com.mohuanmo.sd730app.ui.screen.LearningScreen
 import com.mohuanmo.sd730app.ui.screen.SettingsScreen
+import com.mohuanmo.sd730app.ui.screen.GpuScreen
 import com.mohuanmo.sd730app.ui.theme.SD730AppTheme
 import kotlinx.coroutines.launch
 
@@ -43,6 +45,7 @@ fun MainScaffold() {
     val items = listOf(
         NavItem(stringResource(R.string.nav_status), Icons.Default.Dashboard),
         NavItem(stringResource(R.string.nav_mode), Icons.Default.Speed),
+        NavItem(stringResource(R.string.nav_gpu), Icons.Default.VideogameAsset),
         NavItem(stringResource(R.string.nav_threads), Icons.Default.Memory),
         NavItem(stringResource(R.string.nav_learning), Icons.Default.Psychology),
         NavItem(stringResource(R.string.nav_settings), Icons.Default.Settings),
@@ -114,9 +117,10 @@ fun MainScaffold() {
                     when (selectedItem) {
                         0 -> StatusScreen()
                         1 -> ModeScreen()
-                        2 -> ThreadsScreen()
-                        3 -> LearningScreen()
-                        4 -> SettingsScreen()
+                        2 -> GpuScreen()
+                        3 -> ThreadsScreen()
+                        4 -> LearningScreen()
+                        5 -> SettingsScreen()
                     }
                 }
             }
