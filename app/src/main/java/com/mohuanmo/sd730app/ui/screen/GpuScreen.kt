@@ -1,5 +1,6 @@
 package com.mohuanmo.sd730app.ui.screen
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -23,6 +24,7 @@ import com.mohuanmo.sd730app.R
 import com.mohuanmo.sd730app.data.SchedulerRepository
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun GpuScreen(repository: SchedulerRepository = remember { SchedulerRepository() }) {
     val scope = rememberCoroutineScope()
