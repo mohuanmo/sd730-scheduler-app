@@ -54,23 +54,27 @@ fun StatusScreen(repository: SchedulerRepository = remember { SchedulerRepositor
             errorMsg = null
             val result = repository.getStatus()
             isLoading = false
-            if (result.success) {
-                statusText = result.stdout
-                // Parse key fields
-                result.stdout.lineSequence().forEach { line ->
-                    when {
-                        line.startsWith("Mode:") -> currentMode = line.substringAfter(":").trim()
-                        line.startsWith("Scene Override:") -> sceneOverride = line.substringAfter(":").trim()
-                        line.startsWith("Temperature:") -> temperature = line.substringAfter(":").trim()
-                        line.startsWith("Battery:") -> battery = line.substringAfter(":").trim()
-                        line.startsWith("Foreground App:") -> foregroundApp = line.substringAfter(":").trim()
-                        line.startsWith("GPU Load:") -> gpuLoad = line.substringAfter(":").trim()
-                        line.startsWith("Prediction Engine:") -> prediction = line.substringAfter(":").trim()
-                        line.startsWith("Enabled:") && tpinEnabled == "—" -> tpinEnabled = line.substringAfter(":").trim()
-                    }
+
+            // Always save stdout and attempt to parse, even if exit code is non-zero.
+            // Some shell scripts return exit code 1 at the end but still produce valid output.
+            statusText = result.stdout
+
+            result.stdout.lineSequence().forEach { line ->
+                when {
+                    line.startsWith("Mode:") -> currentMode = line.substringAfter(":").trim()
+                    line.startsWith("Scene Override:") -> sceneOverride = line.substringAfter(":").trim()
+                    line.startsWith("Temperature:") -> temperature = line.substringAfter(":").trim()
+                    line.startsWith("Battery:") -> battery = line.substringAfter(":").trim()
+                    line.startsWith("Foreground App:") -> foregroundApp = line.substringAfter(":").trim()
+                    line.startsWith("GPU Load:") -> gpuLoad = line.substringAfter(":").trim()
+                    line.startsWith("Prediction Engine:") -> prediction = line.substringAfter(":").trim()
+                    line.startsWith("Enabled:") && tpinEnabled == "—" -> tpinEnabled = line.substringAfter(":").trim()
                 }
-            } else {
-                errorMsg = result.stderr.ifBlank { "Exit code: ${result.exitCode}" }
+            }
+
+            // Show warning if exit code was non-zero, but do not discard the parsed data.
+            if (!result.success) {
+                errorMsg = result.stderr.ifBlank { "Exit code: ${result.exitCode} (output may still be valid)" }
             }
         }
     }
