@@ -1,5 +1,6 @@
 package com.mohuanmo.sd730app.ui.screen
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -22,6 +23,7 @@ import kotlinx.coroutines.launch
 data class TableRow(val cells: List<String>)
 data class ParsedTable(val title: String, val headers: List<String>, val rows: List<TableRow>)
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun LearningScreen(repository: SchedulerRepository = remember { SchedulerRepository() }) {
     val scope = rememberCoroutineScope()
