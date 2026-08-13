@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material.icons.filled.Memory
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import com.mohuanmo.sd730app.data.SchedulerRepository
 import com.mohuanmo.sd730app.data.ShellExecutor

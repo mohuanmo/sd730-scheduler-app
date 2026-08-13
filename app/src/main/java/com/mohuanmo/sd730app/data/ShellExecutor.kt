@@ -35,7 +35,7 @@ object ShellExecutor {
     }
 
     suspend fun hasBinary(): Boolean = withContext(Dispatchers.IO) {
-        val result = exec("command -v $BINARY || echo "/system/bin/$BINARY"")
+        val result = exec("command -v $BINARY || echo '/system/bin/$BINARY'")
         result.success && result.stdout.trim().isNotEmpty()
     }
 
