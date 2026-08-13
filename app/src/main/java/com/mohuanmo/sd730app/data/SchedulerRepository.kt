@@ -15,6 +15,9 @@ class SchedulerRepository {
     suspend fun getStatus(): ShellExecutor.Result =
         ShellExecutor.execScheduler("--status")
 
+    suspend fun getGpuStatus(): ShellExecutor.Result =
+        ShellExecutor.execScheduler("--gpu-status")
+
     suspend fun getStats(): ShellExecutor.Result =
         ShellExecutor.execScheduler("--stats")
 
@@ -42,6 +45,10 @@ class SchedulerRepository {
 
     suspend fun setSceneMode(mode: String): ShellExecutor.Result =
         ShellExecutor.execScheduler("--scene", mode)
+
+    // ========== Daemon ==========
+    suspend fun startDaemon(): ShellExecutor.Result =
+        ShellExecutor.execScheduler("--daemon")
 
     // ========== Toggle Engines ==========
     suspend fun enablePrediction(): ShellExecutor.Result =
@@ -85,6 +92,14 @@ class SchedulerRepository {
             "balanced" to 0xFF2196F3,
             "performance" to 0xFFFF9800,
             "ultra" to 0xFFF44336
+        )
+        val SCENE_MODES = listOf("auto", "powersave", "balanced", "performance", "ultra")
+        val SCENE_LABELS = mapOf(
+            "auto" to "自动",
+            "powersave" to "省电",
+            "balanced" to "均衡",
+            "performance" to "性能",
+            "ultra" to "极速"
         )
     }
 }
