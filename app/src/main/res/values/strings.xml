@@ -5,6 +5,7 @@
     <string name="nav_threads">线程</string>
     <string name="nav_learning">学习</string>
     <string name="nav_settings">设置</string>
+    <string name="nav_gpu">GPU</string>
     <string name="no_root">未获取 Root 权限</string>
     <string name="no_root_desc">本应用需要 Root 权限才能与 sd730-scheduler 模块交互。请授予 Root 权限后重试。</string>
     <string name="retry">重试</string>
@@ -55,4 +56,15 @@
     <string name="enter_package">输入包名 (可选)</string>
     <string name="show_threads">显示线程</string>
     <string name="live_monitor">实时监控</string>
+    <string name="scene_mode">Scene 模式</string>
+    <string name="scene_integration">Scene 集成</string>
+    <string name="daemon">守护进程</string>
+    <string name="start_daemon">启动守护进程</string>
+    <string name="gpu_freq">GPU 频率</string>
+    <string name="gpu_governor">GPU Governor</string>
+    <string name="ultra_lock">Ultra 锁定</string>
+    <string name="watchdog">看门狗</string>
+    <string name="app_tier">应用分级</string>
+    <string name="gpu_nodes">GPU 节点</string>
+    <string name="auto">自动</string>
 </resources>
