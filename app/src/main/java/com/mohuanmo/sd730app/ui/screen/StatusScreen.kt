@@ -13,6 +13,8 @@ import androidx.compose.material.icons.filled.BatteryFull
 import androidx.compose.material.icons.filled.Memory
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Apps
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,6 +49,11 @@ fun StatusScreen(repository: SchedulerRepository = remember { SchedulerRepositor
     var gpuLoad by remember { mutableStateOf("—") }
     var prediction by remember { mutableStateOf("—") }
     var tpinEnabled by remember { mutableStateOf("—") }
+    var gpuFreq by remember { mutableStateOf("—") }
+    var gpuGovernor by remember { mutableStateOf("—") }
+    var ultraLock by remember { mutableStateOf("—") }
+    var watchdog by remember { mutableStateOf("—") }
+    var appTier by remember { mutableStateOf("—") }
 
     fun load() {
         scope.launch {
@@ -56,7 +63,6 @@ fun StatusScreen(repository: SchedulerRepository = remember { SchedulerRepositor
             isLoading = false
 
             // Always save stdout and attempt to parse, even if exit code is non-zero.
-            // Some shell scripts return exit code 1 at the end but still produce valid output.
             statusText = result.stdout
 
             result.stdout.lineSequence().forEach { line ->
@@ -69,10 +75,14 @@ fun StatusScreen(repository: SchedulerRepository = remember { SchedulerRepositor
                     line.startsWith("GPU Load:") -> gpuLoad = line.substringAfter(":").trim()
                     line.startsWith("Prediction Engine:") -> prediction = line.substringAfter(":").trim()
                     line.startsWith("Enabled:") && tpinEnabled == "—" -> tpinEnabled = line.substringAfter(":").trim()
+                    line.contains("cur_freq:") -> gpuFreq = line.substringAfter("cur_freq:").trim()
+                    line.contains("governor:") -> gpuGovernor = line.substringAfter("governor:").trim()
+                    line.startsWith("Ultra lock:") -> ultraLock = line.substringAfter(":").trim()
+                    line.startsWith("Watchdog:") -> watchdog = line.substringAfter(":").trim()
+                    line.startsWith("App tier:") -> appTier = line.substringAfter(":").trim()
                 }
             }
 
-            // Show warning if exit code was non-zero, but do not discard the parsed data.
             if (!result.success) {
                 errorMsg = result.stderr.ifBlank { "Exit code: ${result.exitCode} (output may still be valid)" }
             }
@@ -145,6 +155,11 @@ fun StatusScreen(repository: SchedulerRepository = remember { SchedulerRepositor
             InfoChip(Icons.Default.Memory, stringResource(R.string.scene_override), sceneOverride)
             InfoChip(Icons.Default.Memory, stringResource(R.string.prediction), prediction)
             InfoChip(Icons.Default.Memory, stringResource(R.string.thread_pin), tpinEnabled)
+            InfoChip(Icons.Default.Speed, stringResource(R.string.gpu_freq), gpuFreq)
+            InfoChip(Icons.Default.Visibility, stringResource(R.string.gpu_governor), gpuGovernor)
+            InfoChip(Icons.Default.Lock, stringResource(R.string.ultra_lock), ultraLock)
+            InfoChip(Icons.Default.Memory, stringResource(R.string.watchdog), watchdog)
+            InfoChip(Icons.Default.Apps, stringResource(R.string.app_tier), appTier)
         }
 
         Spacer(Modifier.height(16.dp))
