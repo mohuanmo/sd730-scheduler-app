@@ -228,6 +228,7 @@ fun LearningScreen(repository: SchedulerRepository = remember { SchedulerReposit
 }
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 private fun TpinStatusView(
     enabled: String, activeModes: String, budget: String, thresholds: String,
     escalation: String, thermal: String, selfPin: String, trackedApp: String,
