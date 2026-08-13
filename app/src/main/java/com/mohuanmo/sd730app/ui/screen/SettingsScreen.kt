@@ -66,27 +66,27 @@ fun SettingsScreen(repository: SchedulerRepository = remember { SchedulerReposit
         ActionCard(
             title = stringResource(R.string.reset_learning),
             icon = Icons.Default.DeleteForever,
-            onClick = { execute(stringResource(R.string.reset_learning)) { repository.resetLearning() } }
+            onClick = { execute("重置学习数据库") { repository.resetLearning() } }
         )
         ActionCard(
             title = stringResource(R.string.reset_mode_learning),
             icon = Icons.Default.DeleteForever,
-            onClick = { execute(stringResource(R.string.reset_mode_learning)) { repository.resetModeLearning() } }
+            onClick = { execute("重置模式学习") { repository.resetModeLearning() } }
         )
         ActionCard(
             title = stringResource(R.string.reset_prediction),
             icon = Icons.Default.DeleteForever,
-            onClick = { execute(stringResource(R.string.reset_prediction)) { repository.resetPrediction() } }
+            onClick = { execute("重置预测数据库") { repository.resetPrediction() } }
         )
         ActionCard(
             title = stringResource(R.string.tpin_reset),
             icon = Icons.Default.LockReset,
-            onClick = { execute(stringResource(R.string.tpin_reset)) { repository.resetTpin() } }
+            onClick = { execute("释放线程固定") { repository.resetTpin() } }
         )
         ActionCard(
             title = stringResource(R.string.selfm_reset),
             icon = Icons.Default.LockReset,
-            onClick = { execute(stringResource(R.string.selfm_reset)) { repository.resetSelfm() } }
+            onClick = { execute("重置自我管理") { repository.resetSelfm() } }
         )
 
         Spacer(Modifier.height(24.dp))
@@ -102,22 +102,22 @@ fun SettingsScreen(repository: SchedulerRepository = remember { SchedulerReposit
         ActionCard(
             title = stringResource(R.string.prediction_enable),
             icon = Icons.Default.ToggleOn,
-            onClick = { execute(stringResource(R.string.prediction_enable)) { repository.enablePrediction() } }
+            onClick = { execute("启用预测") { repository.enablePrediction() } }
         )
         ActionCard(
             title = stringResource(R.string.prediction_disable),
             icon = Icons.Default.ToggleOff,
-            onClick = { execute(stringResource(R.string.prediction_disable)) { repository.disablePrediction() } }
+            onClick = { execute("禁用预测") { repository.disablePrediction() } }
         )
         ActionCard(
             title = stringResource(R.string.tpin_enable),
             icon = Icons.Default.ToggleOn,
-            onClick = { execute(stringResource(R.string.tpin_enable)) { repository.enableTpin() } }
+            onClick = { execute("启用线程固定") { repository.enableTpin() } }
         )
         ActionCard(
             title = stringResource(R.string.tpin_disable),
             icon = Icons.Default.ToggleOff,
-            onClick = { execute(stringResource(R.string.tpin_disable)) { repository.disableTpin() } }
+            onClick = { execute("禁用线程固定") { repository.disableTpin() } }
         )
     }
 

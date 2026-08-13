@@ -1,5 +1,6 @@
 package com.mohuanmo.sd730app.ui.screen
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -29,6 +30,7 @@ import com.mohuanmo.sd730app.ui.theme.PowersaveGreen
 import com.mohuanmo.sd730app.ui.theme.UltraRed
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun StatusScreen(repository: SchedulerRepository = remember { SchedulerRepository() }) {
     val scope = rememberCoroutineScope()
