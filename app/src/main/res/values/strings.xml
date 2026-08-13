@@ -30,6 +30,7 @@
     <string name="learning_stats">学习统计</string>
     <string name="mode_learning">模式学习</string>
     <string name="prediction_stats">预测统计</string>
+    <string name="tpin_status">线程固定</string>
     <string name="reset">重置</string>
     <string name="reset_learning">重置学习数据库</string>
     <string name="reset_mode_learning">重置模式学习</string>
@@ -67,4 +68,19 @@
     <string name="app_tier">应用分级</string>
     <string name="gpu_nodes">GPU 节点</string>
     <string name="auto">自动</string>
+    <string name="learned_thread_names">学习到的线程名</string>
+    <string name="learned_correlations">学习到的线程关联</string>
+    <string name="self_management">自我管理检测</string>
+    <string name="thread_correlation">线程关联预测</string>
+    <string name="follower">Follower</string>
+    <string name="share">Share</string>
+    <string name="samples">Samples</string>
+    <string name="tracked_app">追踪应用</string>
+    <string name="active_modes">活跃模式</string>
+    <string name="budget">预算</string>
+    <string name="thresholds">阈值</string>
+    <string name="escalation">升级策略</string>
+    <string name="thermal_release">温控释放</string>
+    <string name="self_pin">Self-Pin</string>
+    <string name="verdicts">判定结果</string>
 </resources>
