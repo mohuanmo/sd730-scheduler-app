@@ -83,4 +83,18 @@
     <string name="thermal_release">温控释放</string>
     <string name="self_pin">Self-Pin</string>
     <string name="verdicts">判定结果</string>
+    <string name="effective_mode">生效模式</string>
+    <string name="manual_mode">手动模式</string>
+    <string name="scene_base_mode">Scene 基础模式</string>
+    <string name="learned_override">学习覆盖</string>
+    <string name="gpu_adaptive_scheduler">GPU 自适应调度器</string>
+    <string name="write_first_interval">写优先间隔</string>
+    <string name="ultra_relax_floor">Ultra 放松下限</string>
+    <string name="important_scene_threshold">重要场景阈值</string>
+    <string name="relax_hysteresis">放松迟滞</string>
+    <string name="tier_gates">分级门限</string>
+    <string name="mode_resolution">模式解析</string>
+    <string name="live_gpu_nodes">实时 GPU 节点</string>
+    <string name="opp_table">OPP 表</string>
+    <string name="pwrlevel">Power Level</string>
 </resources>
