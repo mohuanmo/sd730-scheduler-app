@@ -1,0 +1,3 @@
+<resources>
+    <style name="Theme.SD730App" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
